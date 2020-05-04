@@ -1,12 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
+import Popup from "reactjs-popup";
 import {
 	addAttendee,
 	getUsersByPotluckId,
 	removeAttendee,
 } from "../../../actions/index";
-
+import "./PotluckView.scss";
 class PotluckAttendee extends React.Component {
 	constructor(props) {
 		super(props);
@@ -55,40 +56,66 @@ class PotluckAttendee extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="attendees-container">
 				<h2>Attendees</h2>
-				<div>
+				<div className="attendee-container">
 					{this.props.currentPotluckUsers.map((user) => {
-						console.log(user);
+						let userInitial =
+							user.firstName.substring(0, 1) +
+							user.lastName.substring(0, 1);
+						console.log(`Fist Initial: ${userInitial}`);
 						return (
-							<form>
-								<h4>
-									{user.firstName} {user.lastName}
-								</h4>
-								<button
-									id={user.userId}
-									onClick={this.removeAttendee}
-									className={this.state.admin}
-								>
-									Remove
-								</button>
-							</form>
+							<Popup
+								position="top"
+								className="attendee-info"
+								arrow="false"
+								ho
+								trigger={
+									<div className="attendee">
+										<span className="initials">
+											{userInitial}
+										</span>
+									</div>
+								}
+							>
+								<div className="popup">
+									<div>
+										{user.firstName} {user.lastName}
+									</div>
+									<button
+										id={user.userId}
+										onClick={this.removeAttendee}
+										className={this.state.admin}
+									>
+										Remove
+									</button>
+								</div>
+							</Popup>
 						);
 					})}
+					<Popup
+						modal="true"
+						trigger={
+							<div className="attendee add">
+								<span className="initials">+</span>
+							</div>
+						}
+					>
+						<form className={this.state.admin + " add-attendee"}>
+							<div>Add Attendee</div>
+							<div className="email">Attendee Email</div>
+							<input
+								type="email"
+								value={this.state.newAttendee}
+								onChange={this.onChangeAttendee}
+								name="newAttendee"
+							/>
+							<button onClick={this.onSubmitAttendee}>
+								Add Attendee{" "}
+							</button>
+						</form>
+					</Popup>
 				</div>
-				<form className={this.state.admin}>
-					<div>Add Attendee</div>
-					<input
-						type="text"
-						placeHolder="email"
-						value={this.state.newAttendee}
-						onChange={this.onChangeAttendee}
-						name="newAttendee"
-					/>
-					<button onClick={this.onSubmitAttendee}>
-						Add Attendee{" "}
-					</button>
-				</form>
 			</div>
 		);
 	}
