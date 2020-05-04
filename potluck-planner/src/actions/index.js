@@ -59,10 +59,12 @@ export const DELETE_POTLUCK_FAILURE = "DELETE_POTLUCK_FAILURE";
 //const devURL = process.env.DEV_URL;
 
 export const login = (creds) => (dispatch) => {
-	window.alert("Logging in");
 	dispatch({ type: LOGIN_START });
 	return axios
-		.post(`http://localhost:5000/api/auth/login`, creds)
+		.post(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/auth/login`,
+			creds
+		)
 		.then((res) => {
 			localStorage.setItem("token", res.data.authToken);
 			dispatch({ type: LOGIN_SUCCESS, payload: res.data.user });
@@ -76,7 +78,10 @@ export const login = (creds) => (dispatch) => {
 export const register = (regObj) => (dispatch) => {
 	dispatch({ type: REGISTER });
 	return axios
-		.post(`http://localhost:5000/api/auth/register`, regObj)
+		.post(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/auth/register`,
+			regObj
+		)
 		.then((res) => console.log(res))
 		.catch((err) => console.log(err));
 };
@@ -84,9 +89,12 @@ export const register = (regObj) => (dispatch) => {
 export const getCurrentUser = () => (dispatch) => {
 	dispatch({ type: GET_CUR_USER });
 	axios
-		.get(`http://localhost:5000/api/users/current`, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.get(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/users/current`,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			dispatch({ type: GET_CUR_USER_SUCCESS, payload: res.data });
 		})
@@ -98,7 +106,7 @@ export const getCurrentUser = () => (dispatch) => {
 export const getPotlucks = () => (dispatch) => {
 	dispatch({ type: GET_POTLUCKS });
 	axios
-		.get(`http://localhost:5000/api/potlucks`, {
+		.get(`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks`, {
 			headers: { auth: localStorage.getItem("token") },
 		})
 		.then((res) => {
@@ -115,9 +123,12 @@ export const getPotluckById = (id) => (dispatch) => {
 	dispatch({ type: GET_POTLUCK_BY_ID });
 
 	axios
-		.get(`http://localhost:5000/api/potlucks/${id}`, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.get(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks/${id}`,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			console.log(res);
 			dispatch({ type: GET_POTLUCKS_BY_ID_SUCCESS, payload: res.data });
@@ -132,9 +143,12 @@ export const getUsersByPotluckId = (id) => (dispatch) => {
 	dispatch({ type: GET_USERS_BY_POTLUCK });
 
 	axios
-		.get(`http://localhost:5000/api/users/by-potluck/${id}`, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.get(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/users/by-potluck/${id}`,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			dispatch({ type: GET_USERS_BY_POTLUCK_SUCCESS, payload: res.data });
 		})
@@ -148,9 +162,12 @@ export const getRequirements = (id) => (dispatch) => {
 	dispatch({ type: GET_REQUIREMENTS });
 
 	axios
-		.get(`http://localhost:5000/api/potlucks/reqs/${id}`, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.get(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks/reqs/${id}`,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			dispatch({ type: GET_REQUIREMENTS_SUCCESS, payload: res.data });
 		})
@@ -164,9 +181,13 @@ export const addPotluck = (newPotluck) => (dispatch) => {
 	console.log(newPotluck, "blah");
 	dispatch({ type: CREATE_POTLUCK });
 	axios
-		.post(`http://localhost:5000/api/potlucks`, newPotluck, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.post(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks`,
+			newPotluck,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			console.log(res);
 			dispatch({ type: CREATE_POTLUCK_SUCCESS, payload: res.data });
@@ -179,9 +200,12 @@ export const addPotluck = (newPotluck) => (dispatch) => {
 export const deletePotluck = (id) => (dispatch) => {
 	dispatch({ type: DELETE_POTLUCK });
 	axios
-		.delete(`http://localhost:5000/api/potlucks/${id}`, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.delete(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks/${id}`,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			dispatch({ type: DELETE_POTLUCK_SUCCESS, payload: res.data });
 		})
@@ -194,9 +218,13 @@ export const addAttendee = (newAttendee) => (dispatch) => {
 	console.log(newAttendee, "Blah Blah");
 	dispatch({ type: ADD_ATTENDEE });
 	axios
-		.post(`http://localhost:5000/api/potlucks/user/add`, newAttendee, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.post(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks/user/add`,
+			newAttendee,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			console.log(res);
 			dispatch({ type: ADD_ATTENDEE_SUCCESS, payload: res.data });
@@ -209,9 +237,13 @@ export const addAttendee = (newAttendee) => (dispatch) => {
 export const removeAttendee = (attendee) => (dispatch) => {
 	dispatch({ type: REMOVE_ATTENDEE });
 	axios
-		.post(`http://localhost:5000/api/potlucks/user/remove`, attendee, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.post(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks/user/remove`,
+			attendee,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			console.log(res);
 			dispatch({ type: REMOVE_ATTENDEE_SUCCESS, payload: res.data });
@@ -225,9 +257,13 @@ export const addRequirement = (requirement, potluckId) => (dispatch) => {
 	dispatch({ type: ADD_REQUIREMENT });
 	const id = potluckId;
 	axios
-		.post(`http://localhost:5000/api/potlucks/reqs/${id}`, requirement, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.post(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks/reqs/${id}`,
+			requirement,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			dispatch({ type: ADD_REQUIREMENT_SUCCESS, payload: res });
 		})
@@ -239,9 +275,12 @@ export const addRequirement = (requirement, potluckId) => (dispatch) => {
 export const removeRequirement = (id) => (dispatch) => {
 	dispatch({ type: REMOVE_REQUIREMENT });
 	axios
-		.delete(`http://localhost:5000/api/potlucks/reqs/${id}`, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.delete(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks/reqs/${id}`,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			dispatch({ type: REMOVE_REQUIREMENT_SUCCESS });
 		})
@@ -253,9 +292,12 @@ export const removeRequirement = (id) => (dispatch) => {
 export const getFood = (id) => (dispatch) => {
 	dispatch({ type: GET_FOOD });
 	axios
-		.get(`http://localhost:5000/api/potlucks/items/${id}`, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.get(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks/items/${id}`,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			dispatch({ type: GET_FOOD_SUCCESS, payload: res.data });
 		})
@@ -276,9 +318,13 @@ export const claimRequirement = (food) => (dispatch) => {
 		servings: food.servings,
 	};
 	axios
-		.put(`http://localhost:5000/api/potlucks/reqs/${id}`, newFood, {
-			headers: { auth: localStorage.getItem("token") },
-		})
+		.put(
+			`https://potluck-planner-chris-tutor.herokuapp.com/api/potlucks/reqs/${id}`,
+			newFood,
+			{
+				headers: { auth: localStorage.getItem("token") },
+			}
+		)
 		.then((res) => {
 			dispatch({ type: CLAIM_REQUIREMENT_SUCCESS });
 		})
