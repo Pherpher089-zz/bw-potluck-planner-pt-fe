@@ -7,7 +7,8 @@ class CreatePotluck extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			locationName: "",
+			eventName: "",
+			eventDescription: "asdf",
 			locationAddress: "",
 			locationStreet: "",
 			locationUnit: "",
@@ -50,9 +51,9 @@ class CreatePotluck extends React.Component {
 					<h2>What is the name of your event?</h2>
 					<input
 						placeholder="Event name"
-						name="locationName"
+						name="eventName"
 						onChange={this.onChange}
-						value={this.state.locationName}
+						value={this.state.eventName}
 					/>
 					<h2>Where is your event?</h2>
 					<div>
