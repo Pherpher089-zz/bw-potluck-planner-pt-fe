@@ -74,6 +74,7 @@ class PotluckAttendee extends React.Component {
 									<div className="attendee">
 										<span className="initials">
 											{userInitial}
+											{user.role}
 										</span>
 									</div>
 								}
