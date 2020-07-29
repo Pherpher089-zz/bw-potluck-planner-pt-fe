@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import Popup from "reactjs-popup";
+import AddIcon from "./imgs/add-icon.png";
 import {
 	addRequirement,
 	removeRequirement,
@@ -23,7 +24,7 @@ class PotluckRequirements extends React.Component {
 		};
 	}
 	componentDidMount() {
-		if (this.props.admin === 1) {
+		if (this.props.admin === 0) {
 			this.setState({ ...this.state, admin: "admin" });
 		}
 		console.log(this.state.admin);
@@ -68,8 +69,6 @@ class PotluckRequirements extends React.Component {
 	onClaimRequirement = (e) => {
 		e.preventDefault();
 		let curReqs = this.props.currentRequirements;
-		console.log("CURRENT REQUIREMENTS");
-		console.log(e.target.id);
 		let selectedReq;
 
 		for (var i = 0; i < curReqs.length; i++) {
@@ -92,6 +91,7 @@ class PotluckRequirements extends React.Component {
 	};
 
 	render() {
+		console.log(`admin value: ${this.state.admin}`);
 		return (
 			<div className="requirement-container">
 				<h2>
@@ -99,12 +99,7 @@ class PotluckRequirements extends React.Component {
 					<div className={this.state.admin}>
 						<Popup
 							className="popup"
-							trigger={
-								<img
-									src={require("./imgs/add-icon.png")}
-									alt="x"
-								/>
-							}
+							trigger={<img src={AddIcon} alt="x" />}
 							arrow="false"
 							modal="true"
 							position="center"
