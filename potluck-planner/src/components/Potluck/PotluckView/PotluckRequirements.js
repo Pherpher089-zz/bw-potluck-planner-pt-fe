@@ -94,12 +94,12 @@ class PotluckRequirements extends React.Component {
 		console.log(`admin value: ${this.state.admin}`);
 		return (
 			<div className="requirement-container">
-				<h2>
+				<h2 className="foodRequirements">
 					Food Requirements{" "}
 					<div className={this.state.admin}>
 						<Popup
 							className="popup"
-							trigger={<img src={AddIcon} alt="x" />}
+							trigger={<div className="addIcon">+</div>}
 							arrow="false"
 							modal="true"
 							position="center"

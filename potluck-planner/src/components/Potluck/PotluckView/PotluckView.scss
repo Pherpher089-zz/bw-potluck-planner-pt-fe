@@ -158,18 +158,24 @@ $icon-size: 2rem;
 	// flex-direction: column;
 	// flex-wrap: nowrap;
 	width: 55vw;
+	align-content: center;
 	.admin {
 		display: inline;
 		align-content: center;
-		img {
+		.addIcon {
+			display: inline-block;
+			background-color: rgb(235, 235, 235);
+			color: grey;
+			border-radius: 50%;
 			height: $icon-size;
 			width: $icon-size;
-			//opacity: 50%;
-			align-self: center;
-			line-height: 5rem;
-
+			text-align: center;
+			line-height: 2.1rem;
+			font-size: 2rem;
+			font-weight: bolder;
 			&:hover {
-				opacity: 60%;
+				color: white;
+				background-color: grey;
 			}
 		}
 	}
