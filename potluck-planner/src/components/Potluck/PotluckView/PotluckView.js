@@ -32,6 +32,8 @@ class PotluckView extends React.Component {
 		this.setState({ loading: false });
 	}
 
+	
+
 	render() {
 		if (this.props.currentPotluck === undefined) {
 			return <div>No Potluck</div>;

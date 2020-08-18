@@ -256,6 +256,7 @@ export const reducer = (state = initalState, action) => {
 			return {
 				...state,
 				removingAttendee: false,
+				currentPotluckUsers: action.payload,
 			};
 		case REMOVE_ATTENDEE_FAILURE:
 			return {
