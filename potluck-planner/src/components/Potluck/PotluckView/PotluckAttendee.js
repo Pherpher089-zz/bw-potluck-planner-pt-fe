@@ -37,10 +37,7 @@ class PotluckAttendee extends React.Component {
 			potluckId: this.props.currentPotluck.id,
 			userId: e.target.id,
 		};
-		console.log("ATTENDEE");
-		console.log(attendee);
 		await this.props.removeAttendee(attendee);
-		await this.props.getUsersByPotluckId(this.props.currentPotluck.id);
 	};
 	onSubmitAttendee = (e) => {
 		e.preventDefault();
