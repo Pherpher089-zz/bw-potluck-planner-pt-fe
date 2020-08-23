@@ -17,13 +17,11 @@ class PotluckAttendee extends React.Component {
 		};
 	}
 
-	componentDidMount() {
+	async componentDidMount() {
 		if (this.props.admin === 0) {
 			this.setState({ ...this.state, admin: "admin" });
 		}
-		console.log(this.state.admin);
 	}
-
 	onChangeAttendee = (e) => {
 		e.preventDefault();
 		this.setState({
@@ -32,23 +30,23 @@ class PotluckAttendee extends React.Component {
 		});
 	};
 
-	 removeAttendee = async (e) => {
+	removeAttendee =  (e) => {
 		let attendee = {
 			potluckId: this.props.currentPotluck.id,
 			userId: e.target.id,
 		};
-		await this.props.removeAttendee(attendee);
+		
+		 this.props.removeAttendee(attendee);
 	};
-	onSubmitAttendee = (e) => {
+	onSubmitAttendee = async (e) => {
 		e.preventDefault();
 		let newAttendee = {
 			potluckId: this.props.currentPotluck.id,
 			role: 1,
 			email: this.state.newAttendee,
 		};
-		this.props.addAttendee(newAttendee);
-		this.setState({ ...this.state, newAttendee: "" });
-		this.props.getUsersByPotluckId(this.props.currentPotluck.id);
+		await this.props.addAttendee(newAttendee);
+		this.setState({ ...this.state, newAttendee: ""});
 	};
 
 	render() {

@@ -22,13 +22,13 @@ class PotluckView extends React.Component {
 			loading: true,
 		};
 	}
-	async componentDidMount() {
+	 componentDidMount() {
 		let { id } = this.props.match.params;
-		await this.props.getPotluckById(id);
-		await this.props.getUsersByPotluckId(id);
-		await this.props.getRequirements(id);
-		await this.props.getFood(id);
-		await this.props.getCurrentUser();
+		this.props.getPotluckById(id);
+		this.props.getUsersByPotluckId(id);
+		this.props.getRequirements(id);
+		this.props.getFood(id);
+		this.props.getCurrentUser();
 		this.setState({ loading: false });
 	}
 
@@ -37,9 +37,11 @@ class PotluckView extends React.Component {
 	render() {
 		if (this.props.currentPotluck === undefined) {
 			return <div>No Potluck</div>;
-		} else if (this.props.currentPotluckUsers === undefined) {
+		} 
+		else if (this.props.currentPotluckUsers === undefined) {
 			return <div>No Users</div>;
-		} else if (this.props.currentRequirements === undefined) {
+		} 
+		else if (this.props.currentRequirements === undefined) {
 			return <div>No Requirements</div>;
 		} else if (this.props.currentFood === undefined) {
 			return <div>No Food</div>;
