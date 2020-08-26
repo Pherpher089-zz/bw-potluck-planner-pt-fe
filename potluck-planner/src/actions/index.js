@@ -284,7 +284,7 @@ export const removeRequirement = (id) => (dispatch) => {
 			}
 		)
 		.then((res) => {
-			dispatch({ type: REMOVE_REQUIREMENT_SUCCESS });
+			dispatch({ type: REMOVE_REQUIREMENT_SUCCESS, payload:res });
 		})
 		.catch((err) => {
 			dispatch({ type: REMOVE_REQUIREMENT_FAILURE, payload: err });

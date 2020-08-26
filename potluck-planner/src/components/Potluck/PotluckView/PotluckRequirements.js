@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import Popup from "reactjs-popup";
 import AddIcon from "./imgs/add-icon.png";
+//Cheating :$
 import {
 	addRequirement,
 	removeRequirement,
@@ -42,7 +43,6 @@ class PotluckRequirements extends React.Component {
 	removeRequirement = async (e) => {
 		e.preventDefault();
 		await this.props.removeRequirement(e.target.id);
-		await this.props.getRequirements(this.props.currentPotluck.id);
 	};
 
 	onSubmitReq = async (e) => {
@@ -63,7 +63,6 @@ class PotluckRequirements extends React.Component {
 				fufilled: false,
 			},
 		});
-		await this.props.getRequirements(this.props.currentPotluck.id);
 	};
 
 	onClaimRequirement = (e) => {

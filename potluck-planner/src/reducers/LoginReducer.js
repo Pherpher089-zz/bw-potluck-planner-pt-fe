@@ -239,6 +239,8 @@ export const reducer = (state = initalState, action) => {
 			return {
 				...state,
 				addingAttendee: false,
+				currentPotluckUsers: action.payload
+
 			};
 		case ADD_ATTENDEE_FAILURE:
 			return {
@@ -275,6 +277,7 @@ export const reducer = (state = initalState, action) => {
 			return {
 				...state,
 				addingReq: false,
+				currentRequirements: action.payload
 			};
 		case ADD_REQUIREMENT_FAILURE:
 			return {

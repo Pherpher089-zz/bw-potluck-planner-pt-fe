@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
@@ -30,13 +31,13 @@ class PotluckAttendee extends React.Component {
 		});
 	};
 
-	removeAttendee =  (e) => {
+	removeAttendee = async (e) => {
 		let attendee = {
 			potluckId: this.props.currentPotluck.id,
 			userId: e.target.id,
 		};
 		
-		 this.props.removeAttendee(attendee);
+		this.props.removeAttendee(attendee);
 	};
 	onSubmitAttendee = async (e) => {
 		e.preventDefault();
@@ -106,8 +107,10 @@ class PotluckAttendee extends React.Component {
 								onChange={this.onChangeAttendee}
 								name="newAttendee"
 							/>
-							<button onClick={this.onSubmitAttendee}>
-								Add Attendee{" "}
+							<button onClick={
+									this.onSubmitAttendee
+								}>
+								Attendee{" "}
 							</button>
 						</form>
 					</Popup>
