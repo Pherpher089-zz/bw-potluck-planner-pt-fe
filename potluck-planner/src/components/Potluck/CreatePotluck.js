@@ -21,7 +21,6 @@ class CreatePotluck extends React.Component {
 
 	onChange = (e) => {
 		e.preventDefault();
-		console.log(this.state);
 		this.setState({
 			...this.state,
 			[e.target.name]: e.target.value,
@@ -36,7 +35,6 @@ class CreatePotluck extends React.Component {
 		e.preventDefault();
 		await this.props.addPotluck(this.state);
 		await this.props.getPotlucks();
-		// console.log("DONE");
 		this.props.history.push("/protected");
 	};
 

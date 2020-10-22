@@ -22,7 +22,7 @@ class PotluckView extends React.Component {
 			loading: true,
 		};
 	}
-	 componentDidMount() {
+	componentDidMount() {
 		let { id } = this.props.match.params;
 		this.props.getPotluckById(id);
 		this.props.getUsersByPotluckId(id);
@@ -32,15 +32,15 @@ class PotluckView extends React.Component {
 		this.setState({ loading: false });
 	}
 
-	
+
 
 	render() {
 		if (this.props.currentPotluck === undefined) {
 			return <div>No Potluck</div>;
-		} 
+		}
 		else if (this.props.currentPotluckUsers === undefined) {
 			return <div>No Users</div>;
-		} 
+		}
 		else if (this.props.currentRequirements === undefined) {
 			return <div>No Requirements</div>;
 		} else if (this.props.currentFood === undefined) {
@@ -49,7 +49,6 @@ class PotluckView extends React.Component {
 			let curUsers = this.props.currentPotluckUsers;
 			let adminView = 1;
 			for (var i = 0; i < curUsers.length; i++) {
-				console.log(curUsers[i]);
 				if (
 					curUsers[i].userId === this.props.currentUser.id &&
 					curUsers[i].role === 0

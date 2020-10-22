@@ -24,11 +24,12 @@ class PotluckRequirements extends React.Component {
 			},
 		};
 	}
+
+
 	componentDidMount() {
 		if (this.props.admin === 0) {
 			this.setState({ ...this.state, admin: "admin" });
 		}
-		console.log(this.state.admin);
 	}
 
 	onChangeReq = (e) => {
@@ -45,6 +46,7 @@ class PotluckRequirements extends React.Component {
 		await this.props.removeRequirement(e.target.id);
 	};
 
+
 	onSubmitReq = async (e) => {
 		e.preventDefault();
 		let potluckId = this.props.currentPotluck.id;
@@ -54,7 +56,9 @@ class PotluckRequirements extends React.Component {
 			servings: this.state.newRequirement.servings,
 			fufilled: false,
 		};
+		console.log("Before await onSubmitReq => " + this.props.currentRequirements)
 		await this.props.addRequirement(newRequirement, potluckId);
+		console.log("After await onSubmitReq => " + this.props.currentRequirements)
 		this.setState({
 			newRequirement: {
 				category: "Meat",
@@ -90,7 +94,6 @@ class PotluckRequirements extends React.Component {
 	};
 
 	render() {
-		console.log(`admin value: ${this.state.admin}`);
 		return (
 			<div className="requirement-container">
 				<h2 className="foodRequirements">
@@ -111,7 +114,6 @@ class PotluckRequirements extends React.Component {
 									name="category"
 									onChange={this.onChangeReq}
 									required
-									// value={this.state.newRequirement.category}
 								>
 									<option value="Meat">Meat</option>
 									<option value="Poultry">Poultry</option>
@@ -125,12 +127,6 @@ class PotluckRequirements extends React.Component {
 									<option value="Dairy">Dairy</option>
 									<option value="Fruit">Fruit</option>
 								</select>
-								{/* <input
-								type="text"
-								name="category"
-								value={this.state.newRequirement.category}
-								onChange={this.onChangeReq}
-							/> */}
 								<div>Name of dish</div>
 								<input
 									type="text"
@@ -153,68 +149,58 @@ class PotluckRequirements extends React.Component {
 					</div>
 				</h2>
 				<div className="requirements">
-					{/* <div className="requirement">
-						<div>Category</div>
-						<div>Dish</div>
-						<div>Servings</div>
-						<div>Claimed by</div>
-						<div>Action</div>
-					</div> */}
+					{console.log("CURRENT REQUIREMENTS \n")}
+					{console.log(this.props.currentRequirements)}
 					{
-						if(this.props.currentRequirements) {
-							
-						
 						this.props.currentRequirements.map((req) => {
-						var users = this.props.currentPotluckUsers;
-						var user;
-						var claim = "non-claimed";
-						if (req.fufilled === 0) {
-						}
-						for (var i = 0; i < users.length; i++) {
-							if (users[i].userId === req.fufilled) {
-								claim = "claimed";
-								user =
-									users[i].firstName +
-									" " +
-									users[i].lastName;
+							var users = this.props.currentPotluckUsers;
+							var user;
+							var claim = "non-claimed";
+							for (var i = 0; i < users.length; i++) {
+								if (users[i].userId === req.fufilled) {
+									claim = "claimed";
+									user =
+										users[i].firstName +
+										" " +
+										users[i].lastName;
 
-								break;
-							} else {
-								user = (
-									<form className={claim}>
-										<button
-											id={req.id}
-											onClick={this.onClaimRequirement}
-										>
-											Claim
+									break;
+								} else {
+									user = (
+										<form className={claim}>
+											<button
+												id={req.id}
+												onClick={this.onClaimRequirement}
+											>
+												Claim
 										</button>
-									</form>
-								);
+										</form>
+									);
+								}
 							}
-						}
-						return (
-							<div className="requirement">
-								<div>{req.foodCategory}</div>
-								<div>
-									{req.foodDescription}
-									{": "}
+							return (
+								<div className="requirement">
+									<div>{req.foodCategory}</div>
+									<div>
+										{req.foodDescription}
+										{": "}
+									</div>
+									<div>
+										{"Servings: "}
+
+										{req.servings}
+									</div>
+									<div>{user}</div>
+									<img
+										className={this.state.admin}
+										src={require("./imgs/x-icon.png")}
+										alt="x"
+										id={req.id}
+										onClick={this.removeRequirement}
+									/>
 								</div>
-								<div>
-									{"Servings: "}
-									{req.servings}
-								</div>
-								<div>{user}</div>
-								<img
-									className={this.state.admin}
-									src={require("./imgs/x-icon.png")}
-									alt="x"
-									id={req.id}
-									onClick={this.removeRequirement}
-								/>
-							</div>
-						);
-					})}
-					}
+							);
+						})}
 				</div>
 			</div>
 		);

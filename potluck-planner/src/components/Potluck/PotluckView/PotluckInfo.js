@@ -31,7 +31,6 @@ class PotluckInfo extends React.Component {
 	};
 
 	onRemoveSelf = async (e) => {
-		console.log(`Removing user with id: ${this.props.currentUser.id}`);
 		let attendee = {
 			potluckId: this.props.currentPotluck.id,
 			userId: this.props.currentUser.id,

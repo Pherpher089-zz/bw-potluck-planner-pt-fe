@@ -36,7 +36,7 @@ class PotluckAttendee extends React.Component {
 			potluckId: this.props.currentPotluck.id,
 			userId: e.target.id,
 		};
-		
+
 		this.props.removeAttendee(attendee);
 	};
 	onSubmitAttendee = async (e) => {
@@ -47,7 +47,7 @@ class PotluckAttendee extends React.Component {
 			email: this.state.newAttendee,
 		};
 		await this.props.addAttendee(newAttendee);
-		this.setState({ ...this.state, newAttendee: ""});
+		this.setState({ ...this.state, newAttendee: "" });
 	};
 
 	render() {
@@ -59,7 +59,6 @@ class PotluckAttendee extends React.Component {
 						let userInitial =
 							user.firstName.substring(0, 1) +
 							user.lastName.substring(0, 1);
-						console.log(`Fist Initial: ${userInitial}`);
 						return (
 							<Popup
 								position="top"
@@ -108,8 +107,8 @@ class PotluckAttendee extends React.Component {
 								name="newAttendee"
 							/>
 							<button onClick={
-									this.onSubmitAttendee
-								}>
+								this.onSubmitAttendee
+							}>
 								Attendee{" "}
 							</button>
 						</form>

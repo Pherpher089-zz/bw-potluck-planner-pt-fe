@@ -17,14 +17,12 @@ class PotluckCard extends React.Component {
 	};
 
 	render() {
-		console.log(this.props.potlucks);
 		if (this.props.potlucks === undefined) {
 			return <div>You don't have any potlucks currently</div>;
 		}
 		return (
 			<div className="card-container">
 				{this.props.potlucks.map((potluck) => {
-					console.log(potluck.id);
 					return (
 						<div
 							className="card"
