@@ -160,7 +160,11 @@ class PotluckRequirements extends React.Component {
 						<div>Claimed by</div>
 						<div>Action</div>
 					</div> */}
-					{this.props.currentRequirements.map((req) => {
+					{
+						if(this.props.currentRequirements) {
+							
+						
+						this.props.currentRequirements.map((req) => {
 						var users = this.props.currentPotluckUsers;
 						var user;
 						var claim = "non-claimed";
@@ -210,6 +214,7 @@ class PotluckRequirements extends React.Component {
 							</div>
 						);
 					})}
+					}
 				</div>
 			</div>
 		);
