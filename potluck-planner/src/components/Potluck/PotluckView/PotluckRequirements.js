@@ -2,8 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import Popup from "reactjs-popup";
-import AddIcon from "./imgs/add-icon.png";
-//Cheating :$
 import {
 	addRequirement,
 	removeRequirement,
@@ -41,6 +39,7 @@ class PotluckRequirements extends React.Component {
 			},
 		});
 	};
+
 	removeRequirement = async (e) => {
 		e.preventDefault();
 		await this.props.removeRequirement(e.target.id);
@@ -56,9 +55,9 @@ class PotluckRequirements extends React.Component {
 			servings: this.state.newRequirement.servings,
 			fufilled: false,
 		};
-		console.log("Before await onSubmitReq => " + this.props.currentRequirements)
+
 		await this.props.addRequirement(newRequirement, potluckId);
-		console.log("After await onSubmitReq => " + this.props.currentRequirements)
+
 		this.setState({
 			newRequirement: {
 				category: "Meat",
@@ -90,7 +89,7 @@ class PotluckRequirements extends React.Component {
 		};
 
 		this.props.claimRequirement(food);
-		this.props.getRequirements(this.props.currentPotluck.id);
+
 	};
 
 	render() {
@@ -149,7 +148,6 @@ class PotluckRequirements extends React.Component {
 					</div>
 				</h2>
 				<div className="requirements">
-					{console.log("CURRENT REQUIREMENTS \n")}
 					{console.log(this.props.currentRequirements)}
 					{
 						this.props.currentRequirements.map((req) => {

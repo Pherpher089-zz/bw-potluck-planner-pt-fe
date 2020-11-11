@@ -7,7 +7,7 @@ import rootReducer from "./reducers";
 import thunk from "redux-thunk";
 import logger from "redux-logger";
 import { composeWithDevTools } from "redux-devtools-extension";
-
+require("dotenv").config();
 // const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 const store = createStore(
 	rootReducer,
