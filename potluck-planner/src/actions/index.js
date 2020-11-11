@@ -57,7 +57,7 @@ export const DELETE_POTLUCK = "DELETE_POTLUCK";
 export const DELETE_POTLUCK_SUCCESS = "DELETE_POTLUCK_SUCCESS";
 export const DELETE_POTLUCK_FAILURE = "DELETE_POTLUCK_FAILURE";
 
-const url = process.env.PUBLIC_URL || "http://localhost:5000";
+const url = process.env.REACT_APP_URL || "http://localhost:5000";
 
 export const login = (creds) => (dispatch) => {
 	dispatch({ type: LOGIN_START });
