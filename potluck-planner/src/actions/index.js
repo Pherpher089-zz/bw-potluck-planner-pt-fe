@@ -60,9 +60,10 @@ export const DELETE_POTLUCK_FAILURE = "DELETE_POTLUCK_FAILURE";
 const url = process.env.REACT_APP_URL || "http://localhost:5000";
 
 export const login = (creds) => (dispatch) => {
+	console.log("Login entered")
+	console.log(creds)
 	dispatch({ type: LOGIN_START });
 	return axios
-
 		.post(
 			`${url}/api/auth/login`,
 			creds

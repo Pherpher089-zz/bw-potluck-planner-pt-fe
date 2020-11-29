@@ -18,17 +18,18 @@ class Login extends React.Component {
 	}
 
 	onChange = e => {
-		console.log(e.target.value);
 		this.setState({
 			credentials: {
 				...this.state.credentials,
 				[e.target.name]: e.target.value,
 			},
 		});
+		console.log(e.target.value);
 	};
 
 	handleLogin = e => {
 		e.preventDefault();
+		console.log(this.state.credentials)
 		this.props
 			.login(this.state.credentials)
 			.then(() => this.props.history.push("/protected"));
