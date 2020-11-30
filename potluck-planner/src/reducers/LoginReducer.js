@@ -6,19 +6,10 @@ import {
 } from '../actions/LoginActions.js'
 
 import {
-	GET_POTLUCKS,
-	GET_POTLUCKS_SUCCESS,
-	GET_POTLUCKS_FAILURE,
-	GET_POTLUCK_BY_ID,
-	GET_POTLUCKS_BY_ID_SUCCESS,
-	GET_POTLUCKS_BY_ID_FAILURE,
+
 	GET_REQUIREMENTS,
 	GET_REQUIREMENTS_SUCCESS,
 	GET_REQUIREMENTS_FAILURE,
-	CREATE_POTLUCK,
-	DELETE_POTLUCK,
-	DELETE_POTLUCK_SUCCESS,
-	DELETE_POTLUCK_FAILURE,
 	ADD_ATTENDEE,
 	ADD_ATTENDEE_SUCCESS,
 	ADD_ATTENDEE_FAILURE,
@@ -37,29 +28,22 @@ import {
 	CLAIM_REQUIREMENT,
 	CLAIM_REQUIREMENT_SUCCESS,
 	CLAIM_REQUIREMENT_FAILURE,
-	CREATE_POTLUCK_FAILURE,
-	CREATE_POTLUCK_SUCCESS,
+
 } from "../actions";
 
 const initialState = {
 	isLoggingIn: false,
 	isRegistering: false,
-	fetchingPotlucks: false,
-	fetchingPotluck: false,
 	fetchingRequirements: false,
-	potlucks: [],
-	currentPotluck: [],
 	currentPotluckUsers: [],
 	currentRequirements: [],
 	currentFood: [],
 	error: null,
-	addingPotlucks: false,
 	addingAttendee: false,
 	removingAttendee: false,
 	addingReq: false,
 	removingReq: false,
 	claimingRequirement: false,
-	deletingPotluck: false,
 };
 
 export const loginReducer = (state = initialState, action) => {
@@ -88,56 +72,6 @@ export const loginReducer = (state = initialState, action) => {
 				isRegistering: true,
 			};
 
-
-
-		case GET_POTLUCKS:
-			return {
-				...state,
-				potlucks: action.payload,
-				fetchingPotlucks: true,
-				isLoggingIn: false,
-				isRegistering: false,
-			};
-
-		case GET_POTLUCKS_SUCCESS:
-			return {
-				...state,
-				potlucks: action.payload,
-				fetchingPotlucks: false,
-			};
-
-		case GET_POTLUCKS_FAILURE:
-			return {
-				...state,
-				fetchingPotlucks: false,
-				error: action.payload,
-			};
-
-		case GET_POTLUCK_BY_ID:
-			return {
-				...state,
-				currentPotluck: action.payload,
-				fetchingPotluck: true,
-				isLoggingIn: false,
-				isRegistering: false,
-			};
-		case GET_POTLUCKS_BY_ID_SUCCESS:
-			return {
-				...state,
-				currentPotluck: action.payload,
-				fetchingPotluck: false,
-			};
-
-		case GET_POTLUCKS_BY_ID_FAILURE:
-			return {
-				...state,
-				fetchingPotluck: false,
-				error: action.payload,
-			};
-
-		// Get User By Potluck ID
-
-
 		// Get Requirements
 		case GET_REQUIREMENTS:
 			return {
@@ -157,38 +91,7 @@ export const loginReducer = (state = initialState, action) => {
 				fetchingRequirements: false,
 				error: action.payload,
 			};
-		case CREATE_POTLUCK:
-			return {
-				...state,
-				addingPotlucks: true,
-			};
-		case CREATE_POTLUCK_SUCCESS:
-			return {
-				...state,
-				addingPotlucks: false,
-			};
-		case CREATE_POTLUCK_FAILURE:
-			return {
-				...state,
-				addingPotlucks: false,
-				error: action.payload,
-			};
-		// Deleting potluck
-		case DELETE_POTLUCK:
-			return {
-				...state,
-				deletingPotluck: true,
-			};
-		case DELETE_POTLUCK_SUCCESS:
-			return {
-				...state,
-				deletingPotluck: false,
-			};
-		case DELETE_POTLUCK_FAILURE:
-			return {
-				...state,
-				deletingPotluck: false,
-			};
+
 		// Adding attendees to potluck
 		case ADD_ATTENDEE:
 			return {
