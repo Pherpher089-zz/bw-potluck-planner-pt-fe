@@ -74,5 +74,4 @@ class NavBar extends React.Component {
 	}
 }
 const NavBarWithRouter = withRouter(NavBar);
-const mapStateToProps = (state) => ({});
-export default connect(mapStateToProps, {})(NavBarWithRouter);
+export default connect(null)(NavBarWithRouter);

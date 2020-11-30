@@ -11,33 +11,33 @@ const initialState = {
 	error: null
 };
 
-export const loginReducer = (state = initialState, action) => {
+export const loginReducer = (loginState = initialState, action) => {
 	switch (action.type) {
 		case LOGIN_START:
 			return {
-				...state,
+				...loginState,
 				isLoggingIn: true,
 				isRegistering: false,
 			};
 		case LOGIN_SUCCESS:
 			return {
-				...state,
+				...loginState,
 				isLoggingIn: false,
 				currentUser: action.payload,
 			};
 		case LOGIN_FAILURE:
 			return {
-				...state,
+				...loginState,
 				isLoggingIn: false,
 				error: action.payload,
 			};
 		case REGISTER:
 			return {
-				...state,
+				...loginState,
 				isRegistering: true,
 			};
 
 		default:
-			return state;
+			return loginState;
 	}
 };

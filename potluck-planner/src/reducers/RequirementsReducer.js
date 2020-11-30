@@ -22,80 +22,80 @@ export const initialState = {
     error: null
 }
 
-export const requirementsReducer = (state = initialState, action) => {
+export const requirementsReducer = (attendeeState = initialState, action) => {
     switch (action.type) {
         // Get Requirements
         case GET_REQUIREMENTS:
             return {
-                ...state,
+                ...attendeeState,
                 fetchingRequirements: true,
                 currentRequirements: action.payload,
             };
         case GET_REQUIREMENTS_SUCCESS:
             return {
-                ...state,
+                ...attendeeState,
                 fetchingRequirements: false,
                 currentRequirements: action.payload,
             };
         case GET_REQUIREMENTS_FAILURE:
             return {
-                ...state,
+                ...attendeeState,
                 fetchingRequirements: false,
                 error: action.payload,
             };
         //Adding requirement
         case ADD_REQUIREMENT:
             return {
-                ...state,
+                ...attendeeState,
                 addingReq: true,
             };
         case ADD_REQUIREMENT_SUCCESS:
             return {
-                ...state,
+                ...attendeeState,
                 addingReq: false,
                 currentRequirements: action.payload
             };
         case ADD_REQUIREMENT_FAILURE:
             return {
-                ...state,
+                ...attendeeState,
                 addingReq: false,
                 error: action.payload,
             };
         case REMOVE_REQUIREMENT:
             return {
-                ...state,
+                ...attendeeState,
                 removingReq: true,
             };
         case REMOVE_REQUIREMENT_SUCCESS:
             return {
-                ...state,
+                ...attendeeState,
                 removingReq: false,
                 currentRequirements: action.payload
             };
         case REMOVE_REQUIREMENT_FAILURE:
             return {
-                ...state,
+                ...attendeeState,
                 removingReq: false,
                 error: action.payload,
             };
         //Claim food
         case CLAIM_REQUIREMENT:
             return {
-                ...state,
+                ...attendeeState,
                 claimingRequirement: true,
             };
         case CLAIM_REQUIREMENT_SUCCESS:
             return {
-                ...state,
+                ...attendeeState,
                 claimingRequirement: false,
             };
         case CLAIM_REQUIREMENT_FAILURE:
             return {
-                ...state,
+                ...attendeeState,
                 claimingRequirement: false,
                 error: action.payload,
             };
         default:
-            return state;
+            return attendeeState;
     }
 }

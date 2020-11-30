@@ -43,8 +43,8 @@ class PotluckCard extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	potlucks: state.reducer.potlucks,
+const mapStateToProps = (potluckState) => ({
+	potlucks: potluckState.potlucks,
 });
 
 const PotluckCardWithRouter = withRouter(PotluckCard);

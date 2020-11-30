@@ -205,10 +205,10 @@ class PotluckRequirements extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	currentPotluck: state.reducer.currentPotluck,
-	currentRequirements: state.reducer.currentRequirements,
-	currentPotluckUsers: state.reducer.currentPotluckUsers,
+const mapStateToProps = (potluckState, userState, requirementState) => ({
+	currentPotluck: potluckState.currentPotluck,
+	currentRequirements: requirementState.currentRequirements,
+	currentPotluckUsers: userState.currentPotluckUsers,
 });
 
 const PotluckRequirementsWithRouter = withRouter(PotluckRequirements);

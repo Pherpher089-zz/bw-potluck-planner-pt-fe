@@ -49,10 +49,10 @@ class UserDashboard extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
-	potlucks: state.reducer.potlucks,
-	error: state.reducer.error,
-	fetchingPotlucks: state.reducer.fetchingPotlucks,
+const mapStateToProps = (potluckState) => ({
+	potlucks: potluckState.potlucks,
+	error: potluckState.error,
+	fetchingPotlucks: potluckState.fetchingPotlucks,
 });
 const SignOutWithRouter = withRouter(UserDashboard);
 

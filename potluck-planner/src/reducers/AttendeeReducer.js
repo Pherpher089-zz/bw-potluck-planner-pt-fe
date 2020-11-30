@@ -14,46 +14,46 @@ export const initialState = {
     error: null,
 }
 
-export const attendeeReducer = (state = initialState, action) => {
+export const attendeeReducer = (attendeeState = initialState, action) => {
     switch (action.type) {
         // Adding attendees to potluck
         case ADD_ATTENDEE:
             return {
-                ...state,
+                ...attendeeState,
                 addingAttendee: true,
             };
         case ADD_ATTENDEE_SUCCESS:
             return {
-                ...state,
+                ...attendeeState,
                 addingAttendee: false,
                 currentPotluckUsers: action.payload
             };
         case ADD_ATTENDEE_FAILURE:
             return {
-                ...state,
+                ...attendeeState,
                 addingAttendee: false,
                 error: action.payload,
             };
         // Adding attendees to potluck
         case REMOVE_ATTENDEE:
             return {
-                ...state,
+                ...attendeeState,
                 removeAttendee: true,
             };
         case REMOVE_ATTENDEE_SUCCESS:
             return {
-                ...state,
+                ...attendeeState,
                 removingAttendee: false,
                 currentPotluckUsers: action.payload
 
             };
         case REMOVE_ATTENDEE_FAILURE:
             return {
-                ...state,
+                ...attendeeState,
                 removingAttendee: false,
                 error: action.payload,
             };
         default:
-            return state
+            return attendeeState
     }
 }

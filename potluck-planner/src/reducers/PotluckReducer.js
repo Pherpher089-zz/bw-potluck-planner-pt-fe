@@ -13,7 +13,7 @@ import {
     DELETE_POTLUCK_FAILURE,
 } from '../actions/PotluckActions.js'
 
-export const potluckState = {
+export const initialState = {
     potlucks: [],
     currentPotlucks: [],
     addingPotlucks: false,
@@ -21,34 +21,33 @@ export const potluckState = {
     error: null
 };
 
-export const potluckReducer = (state = potluckState, action) => {
-    // eslint-disable-next-line default-case
+export const potluckReducer = (potluckState = initialState, action) => {
     switch (action.type) {
         //Getting Potlucks
         case GET_POTLUCKS:
             return {
-                ...state,
+                ...potluckState,
                 fetchingPotlucks: true,
                 potlucks: action.payload
             };
 
         case GET_POTLUCKS_SUCCESS:
             return {
-                ...state,
+                ...potluckState,
                 potlucks: action.payload,
                 fetchingPotlucks: false,
             };
 
         case GET_POTLUCKS_FAILURE:
             return {
-                ...state,
+                ...potluckState,
                 fetchingPotlucks: false,
                 error: action.payload,
             };
         //Getting Potlucks by ID
         case GET_POTLUCK_BY_ID:
             return {
-                ...state,
+                ...potluckState,
                 currentPotluck: action.payload,
                 fetchingPotluck: true,
                 isLoggingIn: false,
@@ -56,51 +55,51 @@ export const potluckReducer = (state = potluckState, action) => {
             };
         case GET_POTLUCK_BY_ID_SUCCESS:
             return {
-                ...state,
+                ...potluckState,
                 currentPotluck: action.payload,
                 fetchingPotluck: false,
             };
 
         case GET_POTLUCK_BY_ID_FAILURE:
             return {
-                ...state,
+                ...potluckState,
                 fetchingPotluck: false,
                 error: action.payload,
             };
         //Creating Potlucks
         case CREATE_POTLUCK:
             return {
-                ...state,
+                ...potluckState,
                 addingPotlucks: true,
             };
         case CREATE_POTLUCK_SUCCESS:
             return {
-                ...state,
+                ...potluckState,
                 addingPotlucks: false,
             };
         case CREATE_POTLUCK_FAILURE:
             return {
-                ...state,
+                ...potluckState,
                 addingPotlucks: false,
                 error: action.payload,
             };
         // Deleting potluck
         case DELETE_POTLUCK:
             return {
-                ...state,
+                ...potluckState,
                 deletingPotluck: true,
             };
         case DELETE_POTLUCK_SUCCESS:
             return {
-                ...state,
+                ...potluckState,
                 deletingPotluck: false,
             };
         case DELETE_POTLUCK_FAILURE:
             return {
-                ...state,
+                ...potluckState,
                 deletingPotluck: false,
             };
         default:
-            return state;
+            return potluckState;
     }
 }
