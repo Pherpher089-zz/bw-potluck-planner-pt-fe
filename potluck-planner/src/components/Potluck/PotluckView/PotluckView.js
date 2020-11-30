@@ -28,7 +28,6 @@ class PotluckView extends React.Component {
 		this.props.getPotluckById(id);
 		this.props.getUsersByPotluckId(id);
 		this.props.getRequirements(id);
-		this.props.getFood(id);
 		this.props.getCurrentUser();
 		this.setState({ loading: false });
 	}
@@ -44,8 +43,6 @@ class PotluckView extends React.Component {
 		}
 		else if (this.props.currentRequirements === undefined) {
 			return <div>No Requirements</div>;
-		} else if (this.props.currentFood === undefined) {
-			return <div>No Food</div>;
 		} else {
 			let curUsers = this.props.currentPotluckUsers;
 			let adminView = 1;

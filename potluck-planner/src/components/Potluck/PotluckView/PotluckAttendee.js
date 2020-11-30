@@ -38,6 +38,7 @@ class PotluckAttendee extends React.Component {
 		};
 
 		this.props.removeAttendee(attendee);
+		this.props.getUsersByPotluckId(this.props.currentPotluckUsers.id)
 	};
 	onSubmitAttendee = async (e) => {
 		e.preventDefault();
