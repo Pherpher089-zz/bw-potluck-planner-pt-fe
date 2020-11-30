@@ -25,26 +25,6 @@ export const getCurrentUser = () => (dispatch) => {
         });
 };
 
-export const GET_POTLUCKS = "GET_POTLUCKS";
-export const GET_POTLUCKS_SUCCESS = "GET_POTLUCKS_SUCCESS";
-export const GET_POTLUCKS_FAILURE = "GET_POTLUCKS_FAILURE";
-
-export const getPotlucks = () => (dispatch) => {
-    dispatch({ type: GET_POTLUCKS });
-    axios
-        .get(`${url}/api/potlucks`, {
-            headers: { auth: localStorage.getItem("token") },
-        })
-        .then((res) => {
-            console.log(res);
-            dispatch({ type: GET_POTLUCKS_SUCCESS, payload: res.data });
-        })
-        .catch((err) => {
-            console.log("This is actually the error" + err);
-            dispatch({ type: GET_POTLUCKS_FAILURE, payload: err });
-        });
-};
-
 export const GET_USERS_BY_POTLUCK = "GET_USERS_BY_POTLUCK";
 export const GET_USERS_BY_POTLUCK_SUCCESS = "GET_USERS_BY_POTLUCK_SUCCESS";
 export const GET_USERS_BY_POTLUCK_FAILURE = "GET_USERS_BY_POTLUCK_FAILURE";

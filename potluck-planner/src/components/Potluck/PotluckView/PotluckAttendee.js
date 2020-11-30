@@ -7,7 +7,7 @@ import {
 	addAttendee,
 	getUsersByPotluckId,
 	removeAttendee,
-} from "../../../actions/index";
+} from "../../../actions/PotluckActions.js";
 import "./PotluckView.scss";
 class PotluckAttendee extends React.Component {
 	constructor(props) {

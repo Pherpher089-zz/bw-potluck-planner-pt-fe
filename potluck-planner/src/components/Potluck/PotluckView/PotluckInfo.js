@@ -4,8 +4,8 @@ import { withRouter } from "react-router";
 import {
 	deletePotluck,
 	getPotlucks,
-	removeAttendee,
-} from "../../../actions/index.js";
+} from "../../../actions/PotluckActions.js";
+import { removeAttendee } from '../../../actions/AttendeeActions.js'
 import "./PotluckView.scss";
 
 class PotluckInfo extends React.Component {

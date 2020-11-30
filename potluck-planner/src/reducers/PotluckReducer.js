@@ -3,8 +3,8 @@ import {
     GET_POTLUCKS_SUCCESS,
     GET_POTLUCKS_FAILURE,
     GET_POTLUCK_BY_ID,
-    GET_POTLUCKS_BY_ID_SUCCESS,
-    GET_POTLUCKS_BY_ID_FAILURE,
+    GET_POTLUCK_BY_ID_SUCCESS,
+    GET_POTLUCK_BY_ID_FAILURE,
     CREATE_POTLUCK,
     CREATE_POTLUCK_FAILURE,
     CREATE_POTLUCK_SUCCESS,
@@ -53,14 +53,14 @@ export const potluckReducer = (state = initialState, action) => {
                 isLoggingIn: false,
                 isRegistering: false,
             };
-        case GET_POTLUCKS_BY_ID_SUCCESS:
+        case GET_POTLUCK_BY_ID_SUCCESS:
             return {
                 ...state,
                 currentPotluck: action.payload,
                 fetchingPotluck: false,
             };
 
-        case GET_POTLUCKS_BY_ID_FAILURE:
+        case GET_POTLUCK_BY_ID_FAILURE:
             return {
                 ...state,
                 fetchingPotluck: false,
