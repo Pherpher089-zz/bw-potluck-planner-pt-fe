@@ -2,13 +2,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import {
-	getPotluckById,
-	getUsersByPotluckId,
 	getRequirements,
-	getFood,
 	claimRequirement,
+} from "../../../actions/RequirementsActions.js";
+import {
+	getUsersByPotluckId,
 	getCurrentUser,
-} from "../../../actions/index";
+} from '../../../actions/UserActions.js'
+import { getPotluckById } from '../../../actions/PotluckActions.js'
 import PotluckInfo from "./PotluckInfo.js";
 import PotluckAttendee from "./PotluckAttendee";
 import PotluckRequirements from "./PotluckRequirements.js";
@@ -83,7 +84,6 @@ export default connect(mapStateToProps, {
 	getPotluckById,
 	getUsersByPotluckId,
 	getRequirements,
-	getFood,
 	claimRequirement,
 	getCurrentUser,
 })(PotluckViewWithRouter);

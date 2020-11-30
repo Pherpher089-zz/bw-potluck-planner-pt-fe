@@ -52,5 +52,7 @@ export const userReducer = (state = initialState, action) => {
                 fetchingUsers: false,
                 error: action.payload,
             };
+        default:
+            return state;
     }
 }

@@ -13,7 +13,7 @@ import {
     DELETE_POTLUCK_FAILURE,
 } from '../actions/PotluckActions.js'
 
-export const initialState = {
+export const potluckState = {
     potlucks: [],
     currentPotlucks: [],
     addingPotlucks: false,
@@ -21,7 +21,7 @@ export const initialState = {
     error: null
 };
 
-export const potluckReducer = (state = initialState, action) => {
+export const potluckReducer = (state = potluckState, action) => {
     // eslint-disable-next-line default-case
     switch (action.type) {
         //Getting Potlucks
@@ -29,6 +29,7 @@ export const potluckReducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetchingPotlucks: true,
+                potlucks: action.payload
             };
 
         case GET_POTLUCKS_SUCCESS:
@@ -99,5 +100,7 @@ export const potluckReducer = (state = initialState, action) => {
                 ...state,
                 deletingPotluck: false,
             };
+        default:
+            return state;
     }
 }

@@ -7,7 +7,7 @@ import {
 	removeRequirement,
 	getRequirements,
 	claimRequirement,
-} from "../../../actions/index";
+} from "../../../actions/RequirementsActions.js";
 import "./PotluckView.scss";
 
 class PotluckRequirements extends React.Component {

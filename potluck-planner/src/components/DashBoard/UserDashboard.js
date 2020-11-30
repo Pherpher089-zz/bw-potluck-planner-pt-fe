@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { getPotlucks, addPotluck } from "../../actions/index";
+import { getPotlucks, addPotluck } from "../../actions/PotluckActions.js";
 import { Route } from "react-router-dom";
 import { withRouter } from "react-router";
 
@@ -22,7 +22,6 @@ class UserDashboard extends React.Component {
 
 	async componentDidMount() {
 		await this.props.getPotlucks();
-		// this.props.history.push("/protected/potlucks");
 	}
 
 	render() {

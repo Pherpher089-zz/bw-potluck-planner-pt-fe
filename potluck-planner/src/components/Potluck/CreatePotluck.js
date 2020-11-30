@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { addPotluck, getPotlucks } from "../../actions/index";
+import { addPotluck, getPotlucks } from "../../actions/PotluckActions.js";
 
 class CreatePotluck extends React.Component {
 	constructor(props) {

@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { getPotlucks } from "../../actions/index";
-import { getPotluckById } from "../../actions/index";
+import { getPotlucks, getPotluckById } from "../../actions/PotluckActions.js";
 import "./Potluck.scss";
 
 class PotluckCard extends React.Component {

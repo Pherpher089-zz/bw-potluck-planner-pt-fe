@@ -5,9 +5,9 @@ import { withRouter } from "react-router";
 import Popup from "reactjs-popup";
 import {
 	addAttendee,
-	getUsersByPotluckId,
 	removeAttendee,
-} from "../../../actions/PotluckActions.js";
+} from "../../../actions/AttendeeActions.js";
+import { getUsersByPotluckId } from '../../../actions/UserActions.js'
 import "./PotluckView.scss";
 class PotluckAttendee extends React.Component {
 	constructor(props) {
