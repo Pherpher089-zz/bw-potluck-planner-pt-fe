@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { login } from "../../actions";
+import { login } from "../../actions/LoginActions.js";
 import img from "../img/undraw_eating_together_tjhx.svg";
 import "../Login/index.scss";
 import { withRouter } from "react-router";

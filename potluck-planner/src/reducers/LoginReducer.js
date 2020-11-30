@@ -3,18 +3,15 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAILURE,
 	REGISTER,
-	GET_CUR_USER,
-	GET_CUR_USER_SUCCESS,
-	GET_CUR_USER_FAILURE,
+} from '../actions/LoginActions.js'
+
+import {
 	GET_POTLUCKS,
 	GET_POTLUCKS_SUCCESS,
 	GET_POTLUCKS_FAILURE,
 	GET_POTLUCK_BY_ID,
 	GET_POTLUCKS_BY_ID_SUCCESS,
 	GET_POTLUCKS_BY_ID_FAILURE,
-	GET_USERS_BY_POTLUCK,
-	GET_USERS_BY_POTLUCK_SUCCESS,
-	GET_USERS_BY_POTLUCK_FAILURE,
 	GET_REQUIREMENTS,
 	GET_REQUIREMENTS_SUCCESS,
 	GET_REQUIREMENTS_FAILURE,
@@ -44,15 +41,12 @@ import {
 	CREATE_POTLUCK_SUCCESS,
 } from "../actions";
 
-const initalState = {
+const initialState = {
 	isLoggingIn: false,
 	isRegistering: false,
 	fetchingPotlucks: false,
 	fetchingPotluck: false,
-	fetchingUsers: false,
 	fetchingRequirements: false,
-	gettingCurUser: false,
-	currentUser: [],
 	potlucks: [],
 	currentPotluck: [],
 	currentPotluckUsers: [],
@@ -68,7 +62,7 @@ const initalState = {
 	deletingPotluck: false,
 };
 
-export const reducer = (state = initalState, action) => {
+export const loginReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case LOGIN_START:
 			return {
@@ -94,23 +88,7 @@ export const reducer = (state = initalState, action) => {
 				isRegistering: true,
 			};
 
-		case GET_CUR_USER:
-			return {
-				...state,
-				gettingCurUser: true,
-			};
-		case GET_CUR_USER_SUCCESS:
-			return {
-				...state,
-				gettingCurUser: false,
-				currentUser: action.payload,
-			};
-		case GET_CUR_USER_FAILURE:
-			return {
-				...state,
-				gettingCurUser: false,
-				error: action.payload,
-			};
+
 
 		case GET_POTLUCKS:
 			return {
@@ -159,25 +137,7 @@ export const reducer = (state = initalState, action) => {
 
 		// Get User By Potluck ID
 
-		case GET_USERS_BY_POTLUCK:
-			return {
-				...state,
-				currentPotluckUsers: action.payload,
-				fetchingUsers: true,
-			};
-		case GET_USERS_BY_POTLUCK_SUCCESS:
-			return {
-				...state,
-				currentPotluckUsers: action.payload,
-				fetchingUsers: false,
-			};
 
-		case GET_USERS_BY_POTLUCK_FAILURE:
-			return {
-				...state,
-				fetchingUsers: false,
-				error: action.payload,
-			};
 		// Get Requirements
 		case GET_REQUIREMENTS:
 			return {

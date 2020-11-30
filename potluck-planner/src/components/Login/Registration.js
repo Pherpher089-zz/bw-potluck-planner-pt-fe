@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { register, login } from "../../actions";
+import { register, login } from "../../actions/LoginActions.js";
 import img from "../img/undraw_tasting_de22.svg";
 import "./index.scss";
 import { withRouter } from "react-router";
