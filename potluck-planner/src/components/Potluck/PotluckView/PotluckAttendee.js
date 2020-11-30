@@ -19,6 +19,7 @@ class PotluckAttendee extends React.Component {
 	}
 
 	async componentDidMount() {
+		console.log(this.props);
 		if (this.props.admin === 0) {
 			this.setState({ ...this.state, admin: "admin" });
 		}
@@ -37,8 +38,8 @@ class PotluckAttendee extends React.Component {
 			userId: e.target.id,
 		};
 
-		this.props.removeAttendee(attendee);
-		this.props.getUsersByPotluckId(this.props.currentPotluckUsers.id)
+		await this.props.removeAttendee(attendee);
+		await this.props.getUsersByPotluckId(this.props.currentPotluck.id)
 	};
 	onSubmitAttendee = async (e) => {
 		e.preventDefault();
@@ -49,6 +50,8 @@ class PotluckAttendee extends React.Component {
 		};
 		await this.props.addAttendee(newAttendee);
 		this.setState({ ...this.state, newAttendee: "" });
+		await this.props.getUsersByPotluckId(this.props.currentPotluck.id)
+
 	};
 
 	render() {

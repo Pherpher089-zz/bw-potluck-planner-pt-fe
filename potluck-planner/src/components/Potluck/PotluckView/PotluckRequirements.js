@@ -23,7 +23,6 @@ class PotluckRequirements extends React.Component {
 		};
 	}
 
-
 	componentDidMount() {
 		if (this.props.admin === 0) {
 			this.setState({ ...this.state, admin: "admin" });
