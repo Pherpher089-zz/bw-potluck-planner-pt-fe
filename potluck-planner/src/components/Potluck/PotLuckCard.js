@@ -14,8 +14,13 @@ class PotluckCard extends React.Component {
 		let selectId = e.currentTarget.id;
 		this.props.history.push(`/protected/view-potluck/${selectId}`);
 	};
-
+	onComponentUpdate() {
+		console.log('props V')
+		console.log(this.props)
+	}
 	render() {
+		console.log('props V')
+		console.log(this.props)
 		if (this.props.potlucks === undefined) {
 			return <div>You don't have any potlucks currently</div>;
 		}
@@ -43,8 +48,8 @@ class PotluckCard extends React.Component {
 	}
 }
 
-const mapStateToProps = (potluckState) => ({
-	potlucks: potluckState.potlucks,
+const mapStateToProps = (state) => ({
+	potlucks: state.potluckState.potlucks,
 });
 
 const PotluckCardWithRouter = withRouter(PotluckCard);

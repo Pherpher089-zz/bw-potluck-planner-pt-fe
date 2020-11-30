@@ -71,11 +71,11 @@ class PotluckView extends React.Component {
 	}
 }
 
-const mapStateToProps = (potluckState, requirementState, userState) => ({
-	currentPotluck: potluckState.currentPotluck,
-	currentPotluckUsers: userState.currentPotluckUsers,
-	currentRequirements: requirementState.currentRequirements,
-	currentUser: userState.currentUser,
+const mapStateToProps = (state) => ({
+	currentPotluck: state.potluckState.currentPotluck,
+	currentPotluckUsers: state.userState.currentPotluckUsers,
+	currentRequirements: state.requirementState.currentRequirements,
+	currentUser: state.userState.currentUser,
 });
 
 const PotluckViewWithRouter = withRouter(PotluckView);

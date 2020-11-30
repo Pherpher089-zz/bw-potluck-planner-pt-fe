@@ -82,9 +82,9 @@ class PotluckInfo extends React.Component {
 	}
 }
 
-const mapStateToProps = (potluckState, userState) => ({
-	currentPotluck: potluckState.currentPotluck,
-	currentUser: userState.currentUser,
+const mapStateToProps = (state) => ({
+	currentPotluck: state.potluckState.currentPotluck,
+	currentUser: state.userState.currentUser,
 });
 
 const PotluckInfoWithRouter = withRouter(PotluckInfo);

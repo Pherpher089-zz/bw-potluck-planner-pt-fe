@@ -118,9 +118,9 @@ class PotluckAttendee extends React.Component {
 		);
 	}
 }
-const mapStateToProps = (userState, potluckState) => ({
-	currentPotluckUsers: userState.currentPotluckUsers,
-	currentPotluck: potluckState.currentPotluck,
+const mapStateToProps = (state) => ({
+	currentPotluckUsers: state.userState.currentPotluckUsers,
+	currentPotluck: state.potluckState.currentPotluck,
 });
 
 const PotluckAttendeeWithRouter = withRouter(PotluckAttendee);
