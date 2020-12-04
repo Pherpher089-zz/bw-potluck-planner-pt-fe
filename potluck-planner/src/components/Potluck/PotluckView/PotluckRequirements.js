@@ -41,6 +41,7 @@ class PotluckRequirements extends React.Component {
 
 	removeRequirement = async (e) => {
 		e.preventDefault();
+		console.log(e.target.id)
 		await this.props.removeRequirement(e.target.id);
 	};
 
@@ -67,7 +68,7 @@ class PotluckRequirements extends React.Component {
 		});
 	};
 
-	onClaimRequirement = (e) => {
+	onClaimRequirement = async (e) => {
 		e.preventDefault();
 		let curReqs = this.props.currentRequirements;
 		let selectedReq;
@@ -87,7 +88,9 @@ class PotluckRequirements extends React.Component {
 			servings: curReqs[selectedReq].servings,
 		};
 
-		this.props.claimRequirement(food);
+		await this.props.claimRequirement(food);
+		await this.props.getRequirements(this.props.currentPotluck.id);
+
 
 	};
 
@@ -149,7 +152,7 @@ class PotluckRequirements extends React.Component {
 				<div className="requirements">
 					{console.log(this.props.currentRequirements)}
 					{
-						this.props.currentRequirements.map((req) => {
+						this.props.currentRequirements.map((req, index) => {
 							var users = this.props.currentPotluckUsers;
 							var user;
 							var claim = "non-claimed";
@@ -193,6 +196,7 @@ class PotluckRequirements extends React.Component {
 										src={require("./imgs/x-icon.png")}
 										alt="x"
 										id={req.id}
+										index={index}
 										onClick={this.removeRequirement}
 									/>
 								</div>

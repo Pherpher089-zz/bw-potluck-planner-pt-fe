@@ -64,7 +64,7 @@ export const removeRequirement = (id) => (dispatch) => {
             }
         )
         .then((res) => {
-            dispatch({ type: REMOVE_REQUIREMENT_SUCCESS, payload: res });
+            dispatch({ type: REMOVE_REQUIREMENT_SUCCESS, payload: res.data });
         })
         .catch((err) => {
             dispatch({ type: REMOVE_REQUIREMENT_FAILURE, payload: err });
@@ -88,7 +88,7 @@ export const claimRequirement = (food) => (dispatch) => {
     };
     axios
         .put(
-            `${url}api/potlucks/reqs/${id}`,
+            `${url}/api/potlucks/reqs/${id}`,
             newFood,
             {
                 headers: { auth: localStorage.getItem("token") },

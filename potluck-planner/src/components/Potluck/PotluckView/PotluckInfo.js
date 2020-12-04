@@ -48,15 +48,16 @@ class PotluckInfo extends React.Component {
 					alt="img"
 				/>
 				<div className="potluck-info">
-					<h1>{this.props.currentPotluck.locationName}</h1>
+					{/* <h1>{this.props.currentPotluck.locationName}</h1> */}
 					<div>
-						<p>
+						<h1 className="event-name">{this.props.currentPotluck.eventName}</h1>
+						<p className="address">
 							{this.props.currentPotluck.locationAddress}{" "}
 							{this.props.currentPotluck.locationStreet}
 							{" Apt:"}
 							{this.props.currentPotluck.locationUnit}
 						</p>
-						<p>
+						<p className="address">
 							{this.props.currentPotluck.locationCity}{" "}
 							{this.props.currentPotluck.locationState}
 							{", "}
@@ -64,20 +65,20 @@ class PotluckInfo extends React.Component {
 							{this.props.currentPotluck.locationCountry}
 						</p>
 					</div>
-					<button
-						className={this.state.admin}
+					<button className='delete-potluck'
+						className={`${this.state.admin}delete-potluck`}
 						onClick={this.onDeletePotluck}
 					>
 						Delete Potluck
 					</button>
 					<button
-						className={this.state.attendee}
+						className={`${this.state.attendee} deleted-potluic`}
 						onClick={this.onRemoveSelf}
 					>
 						Unattended Potluck
 					</button>
 				</div>
-			</div>
+			</div >
 		);
 	}
 }
