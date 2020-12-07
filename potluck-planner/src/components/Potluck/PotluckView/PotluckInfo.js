@@ -72,7 +72,7 @@ class PotluckInfo extends React.Component {
 						Delete Potluck
 					</button>
 					<button
-						className={`${this.state.attendee} deleted-potluic`}
+						className={`${this.state.attendee} deleted-potluck`}
 						onClick={this.onRemoveSelf}
 					>
 						Unattended Potluck
